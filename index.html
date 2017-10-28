@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS TRANSFORM - Un tutoriel par Quentin Parmentier, Thibaud Grepin et Morgan Dubois</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="highlight.min.css">
+    <script src="highlight.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    </style>
+  </head>
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#myPage">CSS TRANSFORM</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#translate">Translate</a></li>
+            <li><a href="#rotate">Rotate</a></li>
+            <li><a href="#scale">Scale</a></li>
+            <li><a href="#skew">Skew</a></li>
+            <li><a href="#perspective">Perspective</a></li>
+            <li><a href="#matrix">Matrix</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron text-center">
+      <h1>CSS Transform</h1>
+      <p>Un tutoriel par Quentin Parmentier, Thibaud Grepin et Morgan Dubois.</p>
+    </div>
+    <!-- Container (About Section) -->
+    <div id="introduction" class="container-fluid">
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+          <h2>INTRODUCTION</h2>
+          <div class="slideanim presentation">
+            <h3>Présentation</h3>
+            <p>
+              La propriété transform() est une propriété css qui permet de manipuler visuellement des élements. Les manipulations possibles sont le changement de position, la rotation, l'agrandissement (ou le rétrécissement), le "penchement" des angles et la perspective. Toutes ces propriétés seront présentés de manières simples, puis elles seront animées pour une meilleure compréhension.
+            </p>
+            <h3>Valeurs possibles</h3>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Valeur</th>
+                  <th>Description</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>translate(x,y)</td>
+                  <td>Transforme la position d'un élément aux coordonnées (x,y)</td>
+                  <td><a href="#slidetranslatexy">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>translate3d(x,y,z)</td>
+                  <td>Transforme la position d'un élément aux coordonnées (x,y,z)</td>
+                  <td><a href="#slidetranslate3d">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>translateX(x)</td>
+                  <td>Transforme la position d'un élément sur l'axe x</td>
+                  <td><a href="#slidetranslatex">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>translateY(y)</td>
+                  <td>Transforme la position d'un élément sur l'axe y</td>
+                  <td><a href="#slidetranslatey">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>translateZ(z)</td>
+                  <td>Transforme la position d'un élément sur l'axe z</td>
+                  <td><a href="#slidetranslatez">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>rotate(angle)</td>
+                  <td>Transforme l'angle d'un élément en 2D</td>
+                  <td><a href="#sliderotate">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>rotate3d(x,y,z,angle)</td>
+                  <td>Transforme l'angle d'un élément en 3D</td>
+                  <td><a href="#sliderotate3d">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>rotateX(angle)</td>
+                  <td>Transforme l'angle d'un élément sur l'axe x</td>
+                  <td><a href="#sliderotatex">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>rotateY(angle)</td>
+                  <td>Transforme l'angle d'un élément sur l'axe y</td>
+                  <td><a href="#sliderotatey">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>rotateZ(angle)</td>
+                  <td>Transforme l'angle d'un élément sur l'axe z</td>
+                  <td><a href="#sliderotatez">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>scale(x,y)</td>
+                  <td>Transforme la taille d'un élément selon les axes x et y</td>
+                  <td><a href="#slidescale">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>scale3d(x,y,z)</td>
+                  <td>Transforme la taille d'un élément selon les axes x, y et z</td>
+                  <td><a href="#slidescale3d">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>scaleX(x)</td>
+                  <td>Transforme la taille d'un élément selon l'axe x</td>
+                  <td><a href="#slidescalex">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>scaleY(y)</td>
+                  <td>Transforme la taille d'un élément selon l'axe y</td>
+                  <td><a href="#slidescaley">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>scaleZ(z)</td>
+                  <td>Transforme la taille d'un élément selon l'axe z</td>
+                  <td><a href="#slidescalez">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>skew(x-angle,y-angle)</td>
+                  <td>Effectue une distortion d'un élément selon les axes x et y</td>
+                  <td><a href="#slideskew">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>skewX(x-angle)</td>
+                  <td>Effectue une distortion d'un élément selon l'axe x</td>
+                  <td><a href="#slideskewx">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>skewY(y-angle)</td>
+                  <td>Effectue une distortion d'un élément selon l'axe y</td>
+                  <td><a href="#slideskewy">Tester</a></td>
+                </tr>
+                <tr>
+                  <td>perspective(n)</td>
+                  <td>Transforme la perspective 3D d'un élément</td>
+                  <td>Tester</td>
+                </tr>
+                <tr>
+                  <td>matrix(n,n,n,n,n,n)</td>
+                  <td>Transforme un élément en 2D en utilisant une matrice de 6 valeurs</td>
+                  <td>Tester</td>
+                </tr>
+                <tr>
+                  <td>matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)</td>
+                  <td>Transforme un élément en 3D en utilisant une matrice 4x4 de 16 valeurs</td>
+                  <td>Tester</td>
+                </tr>
+                <tr>
+                  <td>none</td>
+                  <td>Définie qu'il ne devrait pas y avoir de transformation</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>initial</td>
+                  <td>Met la propriété à sa valeur par défaut</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>inherit</td>
+                  <td>Définie que l'élément hérite de la propriété de son parent</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="translate" class="container-fluid bg-grey">
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8">
+          <h2 id="slidetranslatexy">TRANSLATE</h2>
+          <div class="bloc">
+            <h3>Translate(x,y)</h3>
+            <p>
+              La valeur translate permet de modifier un élement depuis sa position actuel à une nouvelle position sur les axes x et y.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: translate(x, y);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre >
+            <p data-height="330" data-theme-id="dark" data-slug-hash="JrQbga" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="Translate" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/JrQbga/">Translate</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+        <div id="slidetranslate3d"></div>
+        </div>
+          <div class="bloc">
+            <h3>Translate3d(x,y,z)</h3>
+            <p>
+              La valeur translate permet de modifier un élement depuis sa position actuel à une nouvelle position sur les axes x, y et z. Pour voir la transformation 3D on doit appliquer de la perspective.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: perspective(n) translate(x, y, z);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+              <p data-height="330" data-theme-id="dark" data-slug-hash="VrwvJR" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="VrwvJR" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/VrwvJR/">VrwvJR</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+            </div>
+            <div id="slidetranslatex"></div>
+          </div>
+        <div class="bloc">
+            <h3>TranslateX(x)</h3>
+            <p>
+              La valeur translate permet de modifier un élement depuis sa position actuel à une nouvelle position sur l'axe x.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: translateX(x);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="LOYGRv" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="TranslateX" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/LOYGRv/">TranslateX</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="slidetranslatey"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>TranslateY(y)</h3>
+            <p>
+              La valeur translate permet de modifier un élement depuis sa position actuel à une nouvelle position sur l'axe y.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: translateY(y);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="ZaEQKo" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="ZaEQKo" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/ZaEQKo/">ZaEQKo</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="slidetranslatez"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>TranslateZ(z)</h3>
+            <p>
+              La valeur translate permet de modifier un élement depuis sa position actuel à une nouvelle position sur l'axe z. Pour voir la transformation on doit appliquer de la perspective.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: perspective(n) translateZ(z);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="GORoBj" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="TranslateZ" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/GORoBj/">TranslateZ</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="rotate" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <h2 id="sliderotate">ROTATE</h2>
+        <div class="bloc">
+            <h3>Rotate(angle)</h3>
+            <p>
+              La valeur rotate permet de modifier l'angle d'un élément dans un repére 2D. L'angle est exprimé en degrès (deg).
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: rotate(angle);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="JrQbeZ" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="Rotate" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/JrQbeZ/">Rotate</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="sliderotate3d"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>Rotate3d(x,y,z,angle)</h3>
+            <p>
+              La valeur rotate3d permet de modifier l'angle d'un élément dans un repére 3D sur les axes x, y et z. L'angle est exprimé en degrès (deg).
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: rotate3d(x,y,z,angle);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="GORreV" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="Rotate3d" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/GORreV/">Rotate3d</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="sliderotatex"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>RotateX(angle)</h3>
+            <p>
+              La valeur rotateY permet de modifier l'angle d'un élément sur l'axe x. L'angle est exprimé en degrès (deg).
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: rotateX(angle);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="NwWdVN" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="RotateX" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/NwWdVN/">RotateX</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="sliderotatey"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>RotateY(angle)</h3>
+            <p>
+              La valeur rotateZ permet de modifier l'angle d'un élément sur l'axe y. L'angle est exprimé en degrès (deg).
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: rotateY(angle);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="EbxZBL" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="RotateY" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/EbxZBL/">RotateY</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="sliderotatez"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>RotateZ(angle)</h3>
+            <p>
+              La valeur rotateX permet de modifier l'angle d'un élément sur l'axe z. L'angle est exprimé en degrès (deg).
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: rotateZ(angle);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="vWYgow" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="vWYgow" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/vWYgow/">vWYgow</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="scale" class="container-fluid bg-grey">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <h2 id="slidescale">SCALE</h2>
+        <div class="bloc">
+            <h3>Scale(x,y)</h3>
+            <p>
+              La valeur scale permet de modifier la taille d'un élément sur les axes x et y. Les valeurs x et y sont des nombres.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: scale(x,y);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="JrQEJz" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="Scale" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/JrQEJz/">Scale</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="slidescale3d"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>Scale3d(x,y,z)</h3>
+            <p>
+              La valeur scale permet de modifier la taille d'un élément sur les axes x et y. Pour pouvoir afficher cette transformation, il faut appliquer de la perspective ainsi que modifier sa position sur l'axe z. Les valeurs x, y, z et n sont des nombres.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: perspective(n) scale3d(x,y,z) translateZ(z);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="dZyvpE" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="Scale3d" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/dZyvpE/">Scale3d</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="slidescalex"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>ScaleX(x)</h3>
+            <p>
+              La valeur scaleX permet de modifier la taille d'un élément sur l'axe x. La valeur x est un nombre.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: scaleX(x);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="NwWpGR" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="ScaleX" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/NwWpGR/">ScaleX</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="slidescaley"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>ScaleY(y)</h3>
+            <p>
+              La valeur scaleY permet de modifier la taille d'un élément sur l'axe y. La valeur y est un nombre.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: scaleY(y);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="QOWpyp" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="ScaleY" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/QOWpyp/">ScaleY</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="slidescalez"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>ScaleZ(z)</h3>
+            <p>
+              La valeur scaleZ permet de modifier la taille d'un élément sur l'axe z. Pour pouvoir afficher cette transformation, il faut appliquer de la perspective ainsi que modifier sa position sur l'axe z. Les valeurs z et n sont des nombres.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: perspective(n) scaleZ(z) translateZ(z);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="qVBrbL" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="ScaleZ" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/qVBrbL/">ScaleZ</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="skew" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <h2 id="slideskew">Skew</h2>
+        <div class="bloc">
+            <h3>Skew(x-angle,y-angle)</h3>
+            <p>
+              La valeur skew permet d'effectuer une distortion d'un élément sur les axes x et y. Les valeurs x-angle et y-angle sont exprimées en deg.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: skew(x-angle,y-angle);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="pdoePd" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="Skew" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/pdoePd/">Skew</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="slideskewx"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>SkewX(x-angle)</h3>
+            <p>
+              La valeur skewX permet d'effectuer une distortion d'un élément sur l'axe x. La valeur x-angle est exprimée en deg.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: skewX(x-angle);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="ZXdBqK" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="SkewX" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/ZXdBqK/">SkewX</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+          <div id="slideskewy"></div>
+        </div>
+
+        <div class="bloc">
+            <h3>SkewY(y-angle)</h3>
+            <p>
+              La valeur skewY permet d'effectuer une distortion d'un élément sur l'axe y. La valeur y-angle est exprimée en deg.
+            </p>
+            <h4>Exemple générique</h4>
+            <div class="slideanim">
+              <pre>
+  <code data-language="css">
+  .element{
+    transform: skewY(y-angle);
+  }</code>
+              </pre>
+              <h4>
+              Exemple live
+              </h4>
+            </pre>
+            <p data-height="330" data-theme-id="dark" data-slug-hash="NwKmmy" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="SkewY" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/NwKmmy/">SkewY</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="perspective" class="container-fluid bg-grey">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <h2>PERSPECTIVE</h2>
+        <div class="slideanim">
+          <p data-height="330" data-theme-id="dark" data-slug-hash="yzdgez" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="Perspective" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/yzdgez/">Perspective</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="matrix" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <h2>Matrix</h2>
+        <div class="slideanim">
+          <p data-height="330" data-theme-id="dark" data-slug-hash="mqbYWB" data-default-tab="result" data-user="Morgandbs" data-embed-version="2" data-pen-title="Matrix" class="codepen">See the Pen <a href="https://codepen.io/Morgandbs/pen/mqbYWB/">Matrix</a> by Morgan (<a href="https://codepen.io/Morgandbs">@Morgandbs</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="container-fluid text-center bg-grey">
+    <p>Un tutoriel par Quentin Parmentier, Thibaud Grepin et Morgan Dubois.</p>
+  </footer>
+  <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+  <script>
+  $(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage'], table tbody tr a").on('click', function(event) {
+  // Make sure this.hash has a value before overriding default behavior
+  if (this.hash !== "") {
+  // Prevent default anchor click behavior
+  event.preventDefault();
+  // Store hash
+  var hash = this.hash;
+  // Using jQuery's animate() method to add smooth page scroll
+  // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+  $('html, body').animate({
+  scrollTop: $(hash).offset().top
+  }, 900, function(){
+  // Add hash (#) to URL when done scrolling (default click behavior)
+  window.location.hash = hash;
+  });
+  } // End if
+  });
+  $(window).scroll(function() {
+  $(".slideanim").each(function(){
+  var pos = $(this).offset().top;
+  var winTop = $(window).scrollTop();
+  if (pos < winTop + 600) {
+  $(this).addClass("slide");
+  }
+  });
+  });
+  })
+  </script>
+</body>
+</html>
