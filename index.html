@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <title>CSS TRANSFORM - Un tutoriel par Quentin Parmentier, Thibaud Grepin et Morgan Dubois</title>
     <meta charset="utf-8">
+    <link rel="icon" href="img/CSS3.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="src/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="highlight.min.css">
-    <script src="highlight.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/css/highlight.min.css">
     <style>
     </style>
   </head>
@@ -35,6 +33,7 @@
             <li><a href="#skew">Skew</a></li>
             <li><a href="#perspective">Perspective</a></li>
             <li><a href="#matrix">Matrix</a></li>
+            <li><a href="#sources">Sources</a></li>
           </ul>
         </div>
       </div>
@@ -48,7 +47,7 @@
       <div class="row">
         <div class="col-sm-offset-2 col-sm-8">
           <h2>INTRODUCTION</h2>
-          <div class="slideanim presentation">
+          <div class="presentation">
             <h3>Présentation</h3>
             <p>
               La propriété transform() est une propriété css qui permet de manipuler visuellement des élements. Les manipulations possibles sont le changement de position, la rotation, l'agrandissement (ou le rétrécissement), le "penchement" des angles et la perspective. Toutes ces propriétés seront présentés de manières simples, puis elles seront animées pour une meilleure compréhension.
@@ -182,6 +181,40 @@
                   <td>inherit</td>
                   <td>Définie que l'élément hérite de la propriété de son parent</td>
                   <td></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Valeurs possibles</h3>
+
+            <p> Les nombres dans le tableau correspondent à la première version sur laquelle la propriété est totalement supporté. Les nombres suivies de -webkit- -ms- -moz- -o- correspondent à la première version ou la propriété est supporté avec le préfix correspondant.</p>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Navigateurs</th>
+                  <th>Google Chrome</th>
+                  <th>Internet Explorer</th>
+                  <th>Mozilla Firefox</th>
+                  <th>Safari</th>
+                  <th>Opera</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Transform2D</td>
+                  <td>36.0<br>4.0 -webkit-</td>
+                  <td>10.0<br>9.0 -ms-</td>
+                  <td>16.0<br>3.5 -moz-</td>
+                  <td>9.0<br>3.2 -webkit-</td>
+                  <td>23.0<br>15.0 -webkit-<br>10.5 -o-</td>
+                </tr>
+                <tr>
+                  <td>Transform3D</td>
+                  <td>36.0<br>12.0 -webkit-</td>
+                  <td>12.0</td>
+                  <td>10</td>
+                  <td>9.0<br>4.0 -webkit-</td>
+                  <td>23.0<br>15.0 -webkit-</td>
                 </tr>
               </tbody>
             </table>
@@ -789,10 +822,47 @@
       </div>
     </div>
   </div>
-  <footer class="container-fluid text-center bg-grey">
+
+  <div id="matrix" class="container-fluid bg-grey">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <h2 id="sources">Sources</h2>
+        <div class="bloc">
+          <p>
+            Voici quelques liens utiles pour aller plus loin:
+            <ul>
+              <li><a href="https://www.w3.org/TR/2013/WD-css-transforms-1-20131126/" target="_blank">Spécification W3</a></li>
+              <li><a href="https://www.w3schools.com/cssref/css3_pr_transform.asp" target="_blank">W3schools</a></li>
+              <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/transform" target="_blank">Developer Mozilla</a></li>
+              <li><a href="https://www.alsacreations.com/article/lire/1418-css3-transformations-2d.html" target="_blank">Alsacréations</a></li>
+              <li><a href="https://css-tricks.com/almanac/properties/t/transform/" target="_blank">CSS-Tricks</a></li>
+              <li><a href="https://openclassrooms.com/courses/utilisez-les-effets-avances-de-css-sur-votre-site/les-transformations-2d-1" target="_blank">Openclassroom</a></li>
+              <li><a href="https://caniuse.com/#search=transform" target="_blank">Can I Use</a></li>
+            </ul>
+          </p>
+          <p>
+            Voici également quelques outils aidant à votre création:
+            <ul>
+              <li>Voici un site pour vous aidez à résoudre des matrices et matrices 3D, vous le trouverez <a href="http://meyerweb.com/eric/tools/matrix/" target="_blank">ici</a>.</li>
+              <li>Sur ce site vous trouverez tout un tas de snippet pour vous aidez dans vos créations, le lien <a href="https://codepen.io/" target="_blank">ici</a>.</li>
+              <li>Ce site est la pour construire les propriétés de manière visuel, le lien <a href="http://www.css3maker.com/css3-transform.html" target="_blank">ici</a>.</li>
+            </ul>
+          </p>
+        </div>
+
+        <h3 class="text-center"> Merci d'avoir suivi notre tutoriel, nous espérons avoir répondu à vos questions.</h3>
+      </div>
+    </div>
+  </div>
+
+</body>
+  <footer class="container-fluid text-center">
     <p>Un tutoriel par Quentin Parmentier, Thibaud Grepin et Morgan Dubois.</p>
   </footer>
-  <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+  <script async src="src/js/codepen.js"></script>
+  <script src="src/js/highlight.min.js"></script>
+  <script src="src/js/jquery.min.js"></script>
+  <script src="src/js/bootstrap.min.js"></script>
   <script>
   $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
